@@ -1,4 +1,4 @@
-# AI_STORY_AGENT  
+# AI Creative Story Generator Agent 
 > An intelligent AI-powered story generation system that creates coherent, engaging stories, with consistent characters and plots.
 
 ## 🚀 Features  
