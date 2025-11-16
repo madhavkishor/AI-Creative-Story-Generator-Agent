@@ -1,0 +1,25 @@
+openai:
+  model: "gpt-3.5-turbo"
+  temperature: 0.7
+  max_tokens: 2000
+
+database:
+  path: "./data/stories"
+  vector_store: "./data/vector_store"
+
+story:
+  max_length: 5000
+  default_genre: "fantasy"
+
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+agents:
+  story:
+    max_retries: 3
+    timeout: 30
+  character:
+    max_characters: 10
+  consistency:
+    enabled: true
