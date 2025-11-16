@@ -1,92 +1,153 @@
-# AI Story Agent
+# AI_STORY_AGENT  
+> An intelligent AI-powered story generation system that creates coherent, engaging stories, with consistent characters and plots.
 
-An intelligent AI-powered story generation system that creates coherent, engaging stories with consistent characters and plots.
+## 🚀 Features  
+- **Story Generation**: Generate full narratives from user-provided premises.  
+- **Character Development**: Automatically create and evolve detailed character profiles.  
+- **Consistency Checking**: Ensure story characters, settings and events remain coherent across chapters.  
+- **Multiple Genres**: Fantasy, sci-fi, mystery and more.  
+- **REST API**: Web interface for story generation & continuation.  
+- **Persistence**: Store, retrieve and continue generated stories.
 
-## Features
+## 🧠 Why It Exists  
+Writing compelling stories—and especially maintaining consistency in characters, world-building and plot across multiple chapters—can be hard.  
+This project leverages AI (e.g., large language models) to act as a “story agent” that helps authors, game-writers or hobbyists generate narratives more quickly while keeping them engaging and sensible.
 
-- **Story Generation**: Generate complete stories from premises
-- **Character Development**: Create detailed character profiles
-- **Consistency Checking**: Maintain narrative consistency
-- **Multiple Genres**: Support for fantasy, sci-fi, mystery, and more
-- **REST API**: Web interface for story generation
-- **Persistence**: Store and retrieve generated stories
+## 📦 Installation  
+1. Clone the repository:  
+   ```bash
+   git clone https://github.com/madhavkishor/AI_STORY_AGENT.git
+   cd AI_STORY_AGENT
+````
 
-## Installation
+2. Install dependencies:
 
-1. Clone the repository:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Copy and configure environment variables:
+
+   ```bash
+   cp .env.example .env
+   # Then edit .env and add your API keys (e.g., OpenAI) and any configuration variables.
+   ```
+
+## 🏁 Usage
+
+### ➤ Command Line Interface
+
 ```bash
-git clone <repository-url>
-cd ai-story-agent
-Install dependencies:
+python run.py --mode cli
+```
 
-bash
-pip install -r requirements.txt
-Set up environment variables:
+Or directly via the package interface (if installed):
 
-bash
-cp .env.example .env
-# Edit .env with your OpenAI API key
-Usage
-Command Line Interface
-bash
-python src/main.py
-Web API
-bash
-python run.py --mode api
-# or
-uvicorn src.api.routes:app --reload
-As a Python Package
-python
+```python
 from src.agents.story_agent import StoryAgent
 from src.utils.config import load_config
 
 config = load_config()
 agent = StoryAgent(config)
-
 story = agent.generate_story(
     genre="fantasy",
     premise="A young mage discovers hidden powers",
     length=1000
 )
-API Endpoints
-POST /generate-story - Generate a new story
+print(story)
+```
 
-POST /stories/{id}/continue - Continue an existing story
+### ➤ Web API
 
-POST /develop-character - Develop a character profile
+You can launch a REST API server:
 
-GET /stories - List all stories
+```bash
+python run.py --mode api
+```
 
-GET /stories/{id} - Get a specific story
+or using `uvicorn` if the codebase uses FastAPI (for example):
 
-Configuration
-Edit config/default.yaml to customize:
+```bash
+uvicorn src.api.routes:app --reload
+```
 
-OpenAI model settings
+#### Example Endpoints
 
-Story generation parameters
+* `POST /generate-story` — Generate a new story.
+* `POST /stories/{id}/continue` — Continue an existing story by ID.
+* `POST /develop-character` — Create or enhance a character profile.
+* `GET /stories` — List all stories.
+* `GET /stories/{id}` — Retrieve a specific story.
 
-Database paths
+## ⚙️ Configuration
 
-Logging levels
+Configuration settings are located in `config/default.yaml` (or similar). You can tweak:
 
-Testing
-bash
+* Model parameters (e.g., for OpenAI, GPT-4, GPT-3.5)
+* Story generation settings (length, temperature, genre options)
+* Database / persistence paths
+* Logging levels
+
+## 🧩 Project Structure
+
+```
+AI_STORY_AGENT/
+├─ config/
+│   └─ default.yaml
+├─ data/
+├─ src/
+│   ├─ agents/
+│   │   └─ story_agent.py
+│   ├─ api/
+│   │   └─ routes.py
+│   ├─ utils/
+│   │   ├─ config.py
+│   │   └─ …  
+│   └─ main.py
+├─ tests/
+│   └─ test_run.py
+├─ .env.example
+├─ requirements.txt
+├─ setup.py
+└─ README.md
+```
+
+*(Adjust accordingly to your actual file structure.)*
+
+## ✅ Testing
+
+```bash
 pytest tests/
-Project Structure
-See the main README for detailed project structure.
+```
 
-text
+## 🔍 Example
 
-## 15. Package Initialization Files
+Here’s a quick example of how you might use it:
 
-### `src/__init__.py`
+* Genre: **Mystery**
+* Premise: *“A detective in a fog-shrouded seaside town uncovers an ancient secret.”*
+* Length: **1200 words**
+* Output: A multi-chapter story that introduces characters, builds tension, and resolves the mystery—while keeping character motives consistent throughout.
 
-```python
-"""
-AI Story Agent - An intelligent story generation system
-"""
+## 🤝 Contributing
 
-__version__ = "0.1.0"
-__author__ = "Your Name"
-__email__ = "your.email@example.com"
+Contributions are very welcome! Please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch: `git checkout -b feature/YourFeature`.
+3. Make your changes, add tests if applicable.
+4. Submit a pull request and describe your changes clearly.
+
+
+```text
+MIT License
+Copyright (c) 2025 Madhav Kishor
+```
+
+## 📫 Contact
+
+If you have questions, suggestions or want to share your results:
+
+* Email:(mailto:madhavkishor51052l@example.com)
+* Twitter/GitHub: [@madhavkishor](https://github.com/madhavkishor)
+* Issues: Use the GitHub repository’s “Issues” tab to report bugs or propose enhancements.
+
